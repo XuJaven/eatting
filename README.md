@@ -84,8 +84,10 @@ npm install xxx --save
 ## 路由
 公共导航栏
 ①写入app.vue
-②通过keepAlive判断是否加公共导航栏
+②通过meta判断是否加公共导航栏
 https://blog.csdn.net/qq_37949984/article/details/91038387
+登陆验证
+https://blog.csdn.net/cofecode/article/details/79181894
 
 ##注意
 main.js中全局定义的路由和vuex等，在vue文件中使用时需要加$

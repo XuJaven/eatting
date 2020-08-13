@@ -10,7 +10,9 @@
     </keep-alive>
   </div>
   <div v-if="!$route.meta.keepAlive">
+     <transition name="fade">
      <router-view ></router-view>
+      </transition>
   </div>
   </div>
 </template>
@@ -27,6 +29,9 @@ export default {
     _changTab(path){
       this.$router.replace(path)
     }
+  },
+  mounted(){
+
   }
 }
 </script>
@@ -39,5 +44,16 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active for below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
 }
 </style>

@@ -18,20 +18,21 @@ export default {
     prop: 'active',
     event: 'changeTab'
   }, */
-  props: {
+  /* props: {
     active: {
       type: String,
       default: '',
       required: false
     }
-  },
+  }, */
   data(){
     return{
       tabbarList:[
         {icon:'home-o',text:'首页',value:'home'},
         {icon:'home-o',text:'订单',value:'order'},
         {icon:'home-o',text:'我的',value:'mine'}
-      ]
+      ],
+      active:'home',
     }
   },
   methods:{
@@ -40,6 +41,7 @@ export default {
   mounted(){
     /* this.$bus.$on('method',()=>{
     }) */
+    this.active = this.$route.name.toLowerCase()
   }
 }
 </script>

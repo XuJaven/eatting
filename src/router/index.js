@@ -32,13 +32,7 @@ export default new Router({
         keepAlive: true
       }
     },
-    { path: '/home', 
-      name: 'Home', 
-      component: Home, 
-      meta: {
-        keepAlive: true
-      }
-    },
+    { path: '/home', redirect: '/' },
     { path: '/mine', 
       name: 'Mine', 
       component: Mine,
