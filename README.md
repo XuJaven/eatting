@@ -44,6 +44,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ——————————————————————————
 # 项目结构
+```
 |——.npmrc           #npm配置
 |——.eslintrc.js     #代码规范
 |——.eslintignore    #忽略规范
@@ -63,7 +64,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 |        └──main.js     #公共插件
 └── public  #根目录[/][#/]
       └──index.html #首页，配置meta等
-	  
+```	  
 # 搭建项目
 ```
 ## 开始
