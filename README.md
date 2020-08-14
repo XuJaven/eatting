@@ -24,18 +24,23 @@ npm run serve
 ```
 npm run build
 ```
+## 安装的node版本过高
+```
+（1）降低node版本（也可安装版本管理器nvm）
+①到官网查看node对应npm版本https://nodejs.org/zh-cn/download/releases/
+②npm i -g npm@6.0.1
 
+（2）升级依赖版本
+①删除package.json中的依赖再npm i
+②进行npm run serve时会提醒缺少依赖xxx,
+此时执行npm install xxx --save
+```
 ## 其他
- 
 ``` 
-版本过高时
-npm i xxx --no-optional
 自动修复
 npm run lint
 查看当前配置
 npm config list
-降低版本
-npm i -g npm@6.0.1
 更新版本
 npm install -g npm
 ```
