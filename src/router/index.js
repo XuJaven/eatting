@@ -1,9 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/views/Home'
+// import Home from '@/views/Home'
 import Mine from '@/views/Mine'
 import Login from '@/views/Login'
 import Order from '@/views/Order'
+
+import goods from '@/components/goods/goods.vue'
+import ratings from '@/components/ratings/ratings.vue'
+import seller from '@/components/seller/seller.vue'
 
 /*import signup from '@/views/user/signup'
 import login from '@/views/user/login'
@@ -25,14 +29,19 @@ export default new Router({
   // base:'/test/',
   mode:'history',
   routes: [
-    { path: '/', 
+    {path: '/', redirect: '/goods'}, // 路由重定向
+    {path: '/goods', component: goods},
+    {path: '/ratings', component: ratings},
+    {path: '/seller', component: seller},
+
+    /* { path: '/', 
       name: 'Home', 
       component: Home, 
       meta: {
         keepAlive: true
       }
     },
-    { path: '/home', redirect: '/' },
+    { path: '/home', redirect: '/' }, */
     { path: '/mine', 
       name: 'Mine', 
       component: Mine,

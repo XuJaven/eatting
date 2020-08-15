@@ -73,17 +73,18 @@ module.exports = {
   // webpack-dev-server 相关配置
   devServer: {
     port: 8090, // 配置端口
-    /*proxy: {
+    proxy: {
        '/api': {
-        target: '',
+        target: 'http://127.0.0.1:8089',
         changOrigin: true, // 跨域
-        ws: true, // 是否代理websockets
-        pathRewrite: {
-          '^/api': '' // 重写请求
-        }
+        ws: false, // 是否代理websockets
+        /* pathRewrite: {
+          '/api': '/api' // 重写请求
+        } */
       } 
-    }*/
+    }
   },
+
   // 第三方插件配置
   pluginOptions: {
     i18n: {

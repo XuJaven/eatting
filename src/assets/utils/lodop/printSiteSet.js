@@ -1,4 +1,4 @@
-import { getLodop } from '@/assets/utils/lodop/LodopFuncs'
+import { getLodop } from '../../assets/utils/lodop/LodopFuncs'
 
 // 托收凭证默认位置
 let form5BL = {
