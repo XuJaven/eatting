@@ -101,7 +101,9 @@ main.js中全局定义的路由和vuex等，在vue文件中使用时需要加$
 [如$router,$store]
 ```
 ## 其他
-git推送总是提示用户名密码错误
+git推送相关问题
 https://blog.csdn.net/u013977285/article/details/79726354
+
+https://www.cnblogs.com/cicaday/p/4953664.html
 
 
