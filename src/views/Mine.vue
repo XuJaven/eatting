@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div>mine</div>
+    <div>还未登陆，请先登陆哦</div>
 <van-button type="primary" to="login">登陆</van-button>
   </div>
 </template>
