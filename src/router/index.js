@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/views/Home'
+// import Home from '@/views/Home'
 import Mine from '@/views/Mine'
 import Login from '@/views/Login'
 import Order from '@/views/Order'
@@ -8,21 +8,21 @@ import Order from '@/views/Order'
 import goods from '@/components/goods/goods.vue'
 import ratings from '@/components/ratings/ratings.vue'
 import seller from '@/components/seller/seller.vue'
-import Restaurant from '@/views/Restaurant.vue'
+import Home from '@/views/Restaurant.vue'
 Vue.use(Router)
 
 export default new Router({
   // base:'/test/',
   mode:'history',
   routes: [
-    { path: '/', 
+    /* { path: '/', 
       name: 'Home', 
       component: Home, 
       meta: {
         keepAlive: true
       }
     },
-    { path: '/home', redirect: '/' },
+    { path: '/home', redirect: '/' }, */
     { path: '/mine', 
       name: 'mine', 
       component: Mine,
@@ -44,25 +44,33 @@ export default new Router({
         title:'登陆',
       } 
     },
-    {path: '/restaurant',name: 'restaurant', component: Restaurant,
-      /*  meta: {
-        title:'商家',
-      }, */
+    {path: '/',name: 'home', component: Home,
+      meta: {
+        keepAlive: true
+      },
       children: [
-        {path: '/goods', redirect: '/restaurant' },
+        {path: '/goods', redirect: '/home' },
         {path: '/',name: 'goods', component: goods,
           meta: {
+            keepAlive: true,
             title:'商品',
-          }},
+          }
+        },
         {path: '/ratings',name: 'ratings', component: ratings,
           meta: {
+            keepAlive: true,
             title:'评价',
-          }},
+          }
+        },
         {path: '/seller',name: 'seller', component: seller,
           meta: {
+            keepAlive: true,
             title:'商家',
-          }}
-      ]},
+          }
+        }
+      ]
+    },
+    {path: '/home', redirect: '/' }
   ]
 })
  
