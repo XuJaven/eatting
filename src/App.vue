@@ -12,9 +12,9 @@
   left-arrow
   @click-left="$router.go(-1)"
 />
-     <transition name="fade">
+     <!-- <transition name="fade"> -->
      <router-view ></router-view>
-      </transition>
+      <!-- </transition> -->
   </div>
   </div>
 </template>

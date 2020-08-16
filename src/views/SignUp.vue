@@ -1,7 +1,7 @@
 <template>
 <!-- <transition name="fade"> -->
   <div id="app">
-    <!-- <div>login</div> -->
+    <div>login</div>
 <van-cell-group>
   <van-field
     v-model="username"
@@ -18,8 +18,7 @@
     error-message="手机号格式错误"
   />
 </van-cell-group>
-<van-button type="primary" >登陆</van-button>
-<van-button type="default" to="signup">注册</van-button>
+<van-button type="primary" >注册</van-button>
   </div>
 <!-- </transition> -->
 </template>

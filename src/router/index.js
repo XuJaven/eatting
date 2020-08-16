@@ -3,6 +3,7 @@ import Router from 'vue-router'
 // import Home from '@/views/Home'
 import Mine from '@/views/Mine'
 import Login from '@/views/Login'
+import SignUp from '@/views/SignUp'
 import Order from '@/views/Order'
 
 import goods from '@/components/goods/goods.vue'
@@ -42,6 +43,13 @@ export default new Router({
       component: Login,
       meta: {
         title:'登陆',
+      } 
+    },
+    { path: '/signup', 
+      name: 'signup', 
+      component: SignUp,
+      meta: {
+        title:'注册',
       } 
     },
     {path: '/',name: 'home', component: Home,

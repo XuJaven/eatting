@@ -10,6 +10,7 @@ import 'vant/lib/index.css'
 import filters from '@/assets/filters'
 import Tools from '@/assets/utils/tools'
 import '@/assets/sass/index.scss'
+import '@/assets/style/index.css'
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
