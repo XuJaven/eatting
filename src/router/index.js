@@ -15,15 +15,6 @@ export default new Router({
   // base:'/test/',
   mode:'history',
   routes: [
-    {path: '/restaurant',name: 'restaurant', component: Restaurant,
-      children: [
-        //这里注意写完整
-        {path: '/goods', redirect: '/restaurant' },
-        {path: '/',name: 'goods', component: goods},
-        {path: '/ratings',name: 'ratings', component: ratings},
-        {path: '/seller',name: 'seller', component: seller}
-      ]},
-
     { path: '/', 
       name: 'Home', 
       component: Home, 
@@ -39,20 +30,39 @@ export default new Router({
         keepAlive: true
       } 
     },
-    { path: '/login', 
-      name: 'login', 
-      component: Login,
-      meta: {
-        keepAlive: false
-      } 
-    },
     { path: '/order', 
       name: 'order', 
       component: Order,
       meta: {
         keepAlive: true
       } 
-    }
+    },
+    { path: '/login', 
+      name: 'login', 
+      component: Login,
+      meta: {
+        title:'登陆',
+      } 
+    },
+    {path: '/restaurant',name: 'restaurant', component: Restaurant,
+      /*  meta: {
+        title:'商家',
+      }, */
+      children: [
+        {path: '/goods', redirect: '/restaurant' },
+        {path: '/',name: 'goods', component: goods,
+          meta: {
+            title:'商品',
+          }},
+        {path: '/ratings',name: 'ratings', component: ratings,
+          meta: {
+            title:'评价',
+          }},
+        {path: '/seller',name: 'seller', component: seller,
+          meta: {
+            title:'商家',
+          }}
+      ]},
   ]
 })
  

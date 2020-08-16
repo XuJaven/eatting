@@ -1,15 +1,17 @@
 <template>
 <div>
   <div id="app" v-if="$route.meta.keepAlive">
-    <!-- <keep-alive>
-    <img alt="Vue logo" src="./assets/logo.png">
-    </keep-alive> -->
      <router-view ></router-view>
      <keep-alive>
     <eat-footer @change-tab="_changTab"></eat-footer>
     </keep-alive>
   </div>
   <div v-if="!$route.meta.keepAlive">
+    <van-nav-bar
+  :title="pageTitle"
+  left-arrow
+  @click-left="$router.go(-1)"
+/>
      <transition name="fade">
      <router-view ></router-view>
       </transition>
@@ -22,16 +24,24 @@
 
 export default {
   name: 'App',
-  // components: {
-  //   HelloWorld
-  // }
+  data(){
+    return{
+      pageTitle:this.$route.meta.title
+    }
+  },
+  watch: {
+    // 如果路由有变化，会再次执行该方法
+    '$route': 'fetchData'
+  },
   methods:{
     _changTab(path){
       this.$router.replace(path)
+    },
+    fetchData(){
+      this.pageTitle=this.$route.meta.title
     }
   },
   mounted(){
-
   }
 }
 </script>

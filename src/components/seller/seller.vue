@@ -167,7 +167,7 @@ export default {
 
 .seller {
   position: absolute;
-  top: 174px;
+  top: 200px;
   bottom: 0;
   left: 0;
   width: 100%;
