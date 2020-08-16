@@ -247,7 +247,7 @@ export default {
 @import '../../assets/sass/mixin.scss';
 
 .shopcart {
-    position: fixed;
+    position: absolute;
     z-index: 50;
     left: 0;
     bottom: 0;

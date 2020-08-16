@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div id="app" v-if="$route.meta.keepAlive">
+  <div  v-if="$route.meta.keepAlive">
      <router-view ></router-view>
      <keep-alive>
     <eat-footer @change-tab="_changTab"></eat-footer>
