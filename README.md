@@ -102,8 +102,9 @@ main.js中全局定义的路由和vuex等，在vue文件中使用时需要加$
 ```
 ## 其他
 git推送相关问题
+提示用户名密码错误
 https://blog.csdn.net/u013977285/article/details/79726354
-
+不同的推送方式
 https://www.cnblogs.com/cicaday/p/4953664.html
 
 
