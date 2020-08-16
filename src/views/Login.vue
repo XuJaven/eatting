@@ -18,6 +18,7 @@
     error-message="手机号格式错误"
   />
 </van-cell-group>
+<van-button type="primary" >登陆</van-button>
   </div>
 </transition>
 </template>
