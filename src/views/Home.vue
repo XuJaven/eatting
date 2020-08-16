@@ -2,6 +2,7 @@
   <div id="app">
     <img alt="Vue logo" src="@/assets/logo.png">
     <div>HOME</div>
+    <van-button type="primary" to="restaurant">店铺测试</van-button>
   </div>
 </template>
 

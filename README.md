@@ -17,6 +17,7 @@ npm install
  修改router配置和vue.config.js之后
 ```
 npm run serve
+node build/dev-server.js
 ```
 
 ## 上线前的编译 Compiles and minifies for production
@@ -79,7 +80,8 @@ vue create XXX
 ## 依赖
 vant                        #UI框架
 compression-webpack-plugin  #打包使用
-
+express                     #轻量web开发框架（用来获取json里的数据）(好像也可以用来获取mysql数据的)
+better-scroll               #应该是用来做滚动的
 ## 依赖漏配置却使用到(根据错误提示写XXX)
 npm install xxx --save
 

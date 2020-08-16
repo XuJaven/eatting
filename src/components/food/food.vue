@@ -38,7 +38,7 @@
           <ratingselect @select="selectRating" @toggle="toggleContent" :selectType="selectType" :onlyContent="onlyContent" :desc="desc" :ratings="food.ratings"></ratingselect>
           <div class="rating-wrapper">
             <ul v-show="food.ratings && food.ratings.length">
-              <li v-for="rating in food.ratings" v-show="needShow(rating.rateType, rating.text)" class="rating-item border-1px">
+              <li v-for="(rating,index) in food.ratings" :key=index v-show="needShow(rating.rateType, rating.text)" class="rating-item border-1px">
                 <div class="user">
                   <span class="name">{{rating.username}}</span>
                   <img class="avatar" :src="rating.avatar" alt="" width="12" height="12">
@@ -67,7 +67,7 @@ import cartcontrol from '@/components/cartcontrol/cartcontrol.vue'
 import split from '@/components/split/split.vue'
 import ratingselect from '@/components/ratingselect/ratingselect.vue'
 import {formateDate} from '@/assets/js/date.js'
-  /* 带{}，解构赋值，一般是 export 的模块
+/* 带{}，解构赋值，一般是 export 的模块
   不带{}，一般是 export default 的模块 */
 
 /* 定义评价类型 */
@@ -96,11 +96,11 @@ export default {
   methods: {
     show() {
       this.showFlag = true  // 展示food组件
-        /* 初始化要传给ratingselect组件的参数，
+      /* 初始化要传给ratingselect组件的参数，
         因为data里的数据会被多次复用 */
       this.selectType = ALL
       this.onlyContent = true
-        /* better-scroll是根据DOM处理逻辑的，要在$nextTick的回调
+      /* better-scroll是根据DOM处理逻辑的，要在$nextTick的回调
         中执行，因为DOM渲染是异步的 */
       this.$nextTick(() => {
         if (!this.scroll) {
@@ -109,7 +109,7 @@ export default {
           })
         } else {
           this.scroll.refresh()
-            /* refresh() 强制 scroll 重新计算，当 better-scroll 中的元素
+          /* refresh() 强制 scroll 重新计算，当 better-scroll 中的元素
             发生变化的时候调用此方法，这样就不需要重新new一个新的better-scroll了
             文档查看"https://github.com/ustbhuangyi/better-scroll" */
         }
@@ -123,9 +123,9 @@ export default {
         return
       }
       this.$emit('cartAdd', event.target)
-        // cartcontrol组件发射的事件通过food组件发射add事件给goods
+      // cartcontrol组件发射的事件通过food组件发射add事件给goods
       this.$set(this.food, 'count', 1)
-        /* $set是Vue.set的别名，添加原本没有的属性，需要用$set方法
+      /* $set是Vue.set的别名，添加原本没有的属性，需要用$set方法
         触发视图的响应，文档见"https://cn.vuejs.org/v2/api/#vm-set",
         $set 方法作用和 Vue.set 一样，但可以不需要 import 引入 Vue */
     },
