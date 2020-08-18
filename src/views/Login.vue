@@ -1,45 +1,43 @@
 <template>
-<!-- <transition name="fade"> -->
   <div id="app">
-    <!-- <div>login</div> -->
-<van-cell-group>
-  <van-field
-    v-model="username"
-    error
-    required
-    label="用户名"
-    placeholder="请输入用户名"
-  />
+  <van-form>
   <van-field
     v-model="phone"
-    required
     label="手机号"
     placeholder="请输入手机号"
-    error-message="手机号格式错误"
   />
-</van-cell-group>
-<van-button type="primary" >登陆</van-button>
+  <van-field
+    v-model="password"
+    label="密码"
+    placeholder="请输入密码"
+  />
+<van-button type="primary" :disabled="checkAble" @click="_login">登陆</van-button>
 <van-button type="default" to="signup">注册</van-button>
+</van-form>
   </div>
-<!-- </transition> -->
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
   data(){
     return{
-      username:'',
+      password:'',
       phone:''
     }
   },
+  computed:{
+    checkAble(){
+      if(this.phone&&this.password){
+        return false
+      }
+      return true
+    }
+  },
   methods:{
-    /*     _changTab(text){
-      // console.log(text)
-      router.push({ name: 'user'})
-    } */
+    _login(){
+
+    }
   }
 }
 </script>

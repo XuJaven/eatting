@@ -95,6 +95,8 @@ npm install xxx --save
 https://blog.csdn.net/qq_37949984/article/details/91038387
 登陆验证
 https://blog.csdn.net/cofecode/article/details/79181894
+重定向和404
+https://www.cnblogs.com/goloving/p/9254084.html
 
 ## 注意
 main.js中全局定义的路由和vuex等，在vue文件中使用时需要加$
@@ -106,5 +108,6 @@ git推送相关问题
 https://blog.csdn.net/u013977285/article/details/79726354
 不同的推送方式
 https://www.cnblogs.com/cicaday/p/4953664.html
+
 
 
