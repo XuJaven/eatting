@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <van-form>
+  <van-form style="margin: 16px;">
   <van-field
     v-model="phone"
     label="手机号"
@@ -11,8 +11,8 @@
     label="密码"
     placeholder="请输入密码"
   />
-<van-button type="primary" :disabled="checkAble" @click="_login">登陆</van-button>
-<van-button type="default" to="signup">注册</van-button>
+<van-button type="primary" block :disabled="checkAble" @click="_login">登陆</van-button>
+<van-button style="border:none;" type="default" to="signup">注册</van-button>
 </van-form>
   </div>
 </template>

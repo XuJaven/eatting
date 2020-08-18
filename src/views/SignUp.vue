@@ -26,6 +26,7 @@
     label="密码"
     placeholder="长度在 8-10 之间，必须包含大小写字母和数字"
     :error-message="errorMsg.password"
+    @input="passwordValidator"
     :rules="[{ validator: passwordValidator}]"
   />
   <van-field
@@ -91,26 +92,30 @@ export default {
   methods:{
     phoneValidator(value){
       if(!value){
-        this.errorMsg.phone="请输入手机号"
-      }
-      const pattern = /^1[3|4|5|7|8][0-9]{9}$/
-      if(!pattern.test(value)){
+        this.errorMsg.phone=""
+        // this.errorMsg.phone="请输入手机号"
+      }else{
+        const pattern = /^1[3|4|5|7|8][0-9]{9}$/
+        if(!pattern.test(value)){
         this.errorMsg.phone="手机号格式错误"
       }else{
         this.errorMsg.phone=null
       }
+      }
     },
     userNameValidator(value){
       if(!value){
-        this.errorMsg.userName="请输入姓名"
+        this.errorMsg.userName=""
+        // this.errorMsg.userName="请输入姓名"
       }else{
         this.errorMsg.userName=null
       }
     },
     passwordValidator(value){
       if(!value){
-        this.errorMsg.password="请输入密码"
-      }
+        this.errorMsg.password=""
+        // this.errorMsg.password="请输入密码"
+      }else{
       const patternOne = /^\S*$/
       const patternTwo = /^.{8,10}$/
       const patternThree = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,10}$/
@@ -123,16 +128,18 @@ export default {
       }else{
         this.errorMsg.password=null
       }
-
+      }
     },
     passwordTwiceValidator(value){
       if(!value){
-        this.errorMsg.passwordTwice="请再次输入密码"
-      }
+        this.errorMsg.passwordTwice=""
+        // this.errorMsg.passwordTwice="请再次输入密码"
+      }else{
       if(value!==this.password){
         this.errorMsg.passwordTwice="两次输入密码不同"
       }else{
         this.errorMsg.passwordTwice=null
+      }
       }
     }
   }
