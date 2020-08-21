@@ -97,10 +97,10 @@ export default {
       }else{
         const pattern = /^1[3|4|5|7|8][0-9]{9}$/
         if(!pattern.test(value)){
-        this.errorMsg.phone="手机号格式错误"
-      }else{
-        this.errorMsg.phone=null
-      }
+          this.errorMsg.phone="手机号格式错误"
+        }else{
+          this.errorMsg.phone=null
+        }
       }
     },
     userNameValidator(value){
@@ -116,18 +116,18 @@ export default {
         this.errorMsg.password=""
         // this.errorMsg.password="请输入密码"
       }else{
-      const patternOne = /^\S*$/
-      const patternTwo = /^.{8,10}$/
-      const patternThree = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,10}$/
-      if(!patternOne.test(value)){
-        this.errorMsg.password="密码不能包含空格"
-      }else if(!patternTwo.test(value)){
-        this.errorMsg.password="密码长度不对，应为8-10个字符"
-      }else if(!patternThree.test(value)){
-        this.errorMsg.password="密码格式错误"
-      }else{
-        this.errorMsg.password=null
-      }
+        const patternOne = /^\S*$/
+        const patternTwo = /^.{8,10}$/
+        const patternThree = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9]{8,10}$/
+        if(!patternOne.test(value)){
+          this.errorMsg.password="密码不能包含空格"
+        }else if(!patternTwo.test(value)){
+          this.errorMsg.password="密码长度不对，应为8-10个字符"
+        }else if(!patternThree.test(value)){
+          this.errorMsg.password="密码格式错误"
+        }else{
+          this.errorMsg.password=null
+        }
       }
     },
     passwordTwiceValidator(value){
@@ -135,18 +135,18 @@ export default {
         this.errorMsg.passwordTwice=""
         // this.errorMsg.passwordTwice="请再次输入密码"
       }else{
-      if(value!==this.password){
-        this.errorMsg.passwordTwice="两次输入密码不同"
-      }else{
-        this.errorMsg.passwordTwice=null
-      }
+        if(value!==this.password){
+          this.errorMsg.passwordTwice="两次输入密码不同"
+        }else{
+          this.errorMsg.passwordTwice=null
+        }
       }
     }
   }
 }
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

@@ -1,5 +1,19 @@
-
-export default {
+var myMixin = {
+  created: function () {
+    switch(this.$route.name){
+    case 'mine':
+      document.body.style.backgroundColor="#e2e5ef"
+      break
+    default:
+      document.body.style.backgroundColor="#fff" 
+      break
+    }
+  },
+  methods: {
+    hello: function () {
+      console.log('hello from mixin!')
+    }
+  },
   beforeDestroy () {
     if (this.name) {
       this.$bus.$off(this.name)
@@ -7,4 +21,7 @@ export default {
     }
     console.log('test')
   }
+}
+export default {
+myMixin
 }

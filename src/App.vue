@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div  v-if="$route.meta.keepAlive">
+  <div v-if="$route.meta.keepAlive">
      <router-view ></router-view>
      <keep-alive>
     <eat-footer @change-tab="_changTab"></eat-footer>
@@ -34,11 +34,21 @@ export default {
     '$route': 'fetchData'
   },
   methods:{
+    // 底部导航
     _changTab(path){
       this.$router.replace(path)
     },
+    // 当路由变换
     fetchData(){
       this.pageTitle=this.$route.meta.title
+    /*   switch(this.$route.name){
+      case 'mine':
+        document.body.style.backgroundColor="#e2e5ef"
+        break
+      default:
+        document.body.style.backgroundColor="#fff" 
+        break
+      } */
     }
   },
   mounted(){
@@ -53,7 +63,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 .slide-fade-enter-active {
   transition: all .3s ease;
