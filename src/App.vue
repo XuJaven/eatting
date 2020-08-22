@@ -41,14 +41,6 @@ export default {
     // 当路由变换
     fetchData(){
       this.pageTitle=this.$route.meta.title
-    /*   switch(this.$route.name){
-      case 'mine':
-        document.body.style.backgroundColor="#e2e5ef"
-        break
-      default:
-        document.body.style.backgroundColor="#fff" 
-        break
-      } */
     }
   },
   mounted(){
@@ -63,16 +55,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-.slide-fade-enter-active {
-  transition: all .3s ease;
-}
-.slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active for below version 2.1.8 */ {
-  transform: translateX(10px);
-  opacity: 0;
 }
 </style>

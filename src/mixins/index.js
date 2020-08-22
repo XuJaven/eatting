@@ -2,6 +2,7 @@ var myMixin = {
   beforeCreate () {
     switch(this.$route.name){
     case 'mine':
+    case 'myadd':
       document.body.style.backgroundColor="#e2e5ef"
       break
     default:
@@ -15,10 +16,10 @@ var myMixin = {
     }
   },
   beforeDestroy () {
-    if (this.name) {
+    /* if (this.name) {
       this.$bus.$off(this.name)
       this.$bus.$off(this.name + 'Clear')
-    }
+    } */
     console.log('test')
   }
 }

@@ -1,0 +1,10 @@
+.van-nav-bar{
+	color: black;
+}
+.van-button{
+	margin:5px;
+ }
+ .van-grid-item__content{
+	 cursor: pointer;
+	 background: none;
+ }

@@ -5,6 +5,7 @@ import Mine from '@/views/Mine'
 import Login from '@/views/Login'
 import SignUp from '@/views/SignUp'
 import Order from '@/views/Order'
+import MyAdd from '@/views/MyHome/MyAdd'
 
 import goods from '@/components/goods/goods.vue'
 import ratings from '@/components/ratings/ratings.vue'
@@ -78,7 +79,14 @@ export default new Router({
         }
       ]
     },
-    {path: '/home', redirect: '/' }
+    {path: '/home', redirect: '/' },
+    { path: '/myadd', 
+      name: 'myadd', 
+      component: MyAdd,
+      meta: {
+        title:'我的地址',
+      } 
+    }
   ]
 })
  
