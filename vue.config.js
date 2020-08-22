@@ -1,4 +1,5 @@
-
+// 运行后端
+require('./build/dev-server.js')
 // 自定义项目名称及其版本号
 /* const date = new Date()
 const year = String(date.getFullYear())
@@ -75,7 +76,7 @@ module.exports = {
     port: 8090, // 配置端口
     proxy: {
        '/api': {
-        target: 'http://127.0.0.1:8089',
+        target: 'http://127.0.0.1:8088',
         changOrigin: true, // 跨域
         ws: false, // 是否代理websockets
         /* pathRewrite: {

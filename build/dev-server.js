@@ -27,7 +27,7 @@ apiRoutes.get('/ratings', function(req, res){
 })
 app.use('/api',apiRoutes)
 
-const port = 8089
+const port = 8088
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 

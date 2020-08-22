@@ -1,5 +1,5 @@
 var myMixin = {
-  created: function () {
+  beforeCreate () {
     switch(this.$route.name){
     case 'mine':
       document.body.style.backgroundColor="#e2e5ef"
@@ -23,5 +23,7 @@ var myMixin = {
   }
 }
 export default {
-myMixin
+  install (Vue) {
+    Vue.mixin(myMixin)
+  }
 }

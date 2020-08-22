@@ -17,7 +17,6 @@ npm install
  修改router配置和vue.config.js之后
 ```
 npm run serve
-node build/dev-server.js
 ```
 
 ## 上线前的编译 Compiles and minifies for production
