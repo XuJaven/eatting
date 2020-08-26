@@ -167,11 +167,12 @@ export default {
 
 .seller {
   position: absolute;
-  top: 180px;
+  top: 190px;
   bottom: 0;
   left: 0;
   width: 100%;
   overflow: hidden;
+  margin-bottom:50px;
   .overview {
     position: relative;
     padding: 18px;
