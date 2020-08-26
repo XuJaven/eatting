@@ -351,7 +351,7 @@ export default {
     }
     .ball-container {
         .ball {
-            position: fixed;
+            position: relative;
             left: 32px;
             bottom: 22px;
             z-index: 200;
@@ -417,7 +417,6 @@ export default {
             right: 90px;
             bottom: 12px;
             line-height: 24px;
-            font-weight: 14px;
             font-weight: 700;
             color: rgb(240,20,20)
           }
@@ -430,7 +429,7 @@ export default {
       }
     }
     .list-mask {
-      position: fixed;
+      position: relative;
       z-index: -10;
       top: 0;
       left: 0;

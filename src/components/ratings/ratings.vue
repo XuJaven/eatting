@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="ratings" ref="ratings">
-    <div class="ratings-content">
+    <div class="ratings-content" >
       <div class="overview">
         <div class="overview-left">
           <h1 class="score">{{seller.score}}</h1>
@@ -26,7 +26,7 @@
       </div>
       <split></split>
       <ratingselect @select="selectRating" @toggle="toggleContent" :ratings="ratings" :selectType="selectType" :onlyContent="onlyContent"></ratingselect>
-      <div class="rating-wrapper">
+      <div class="rating-wrapper" >
         <ul>
           <li v-for="(rating,index) in ratings" :key=index class="rating-item" v-show="needShow(rating.rateType, rating.text)">
             <div class="avatar">
@@ -134,8 +134,9 @@ export default {
 
 .ratings {
   position: absolute;
-  top: 180px;
+  top: 190px;
   bottom: 0;
+  margin-bottom:50px;
   left: 0;
   width: 100%;
   overflow: hidden;

@@ -1,20 +1,14 @@
 <template>
 <div>
   <v-header :seller="seller"></v-header>
-  <div class="tab border-1px">
-    <div class="tab-item">
-      <router-link to="goods" class="item">商品</router-link>
-    </div>
-    <div class="tab-item">
-      <router-link to="ratings" class="item">评论</router-link>
-    </div>
-    <div class="tab-item">
-      <router-link to="seller" class="item">商家</router-link>
-    </div>
-  </div>
-  <keep-alive>
+     <van-tabs v-model="activeSeller">
+  <van-tab v-for="(item,index) in  sellerList"   :key="index" :title="item.title" :to='item.route'>
+    </van-tab>
+</van-tabs>
+<keep-alive>
     <!-- <keep-alive> 包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们。-->
-    <router-view :seller="seller"></router-view>
+    <router-view :seller="seller">
+    </router-view>
   </keep-alive>
 </div>
 </template>
@@ -36,7 +30,13 @@ export default {
           // console.log(queryParam)
           return queryParam.id
         })() // 立即执行函数获取id
-      }
+      },
+      sellerList:[
+        {value:1,title:'商品',route:'goods'},
+        {value:2,title:'评论',route:'ratings'},
+        {value:3,title:'商家',route:'seller'}
+      ],
+      activeSeller: 0
     }
   },
   created() {
@@ -48,6 +48,18 @@ export default {
         https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign */
       }
     })
+
+  },
+  mounted(){
+console.log('开始',this.$route)
+    let that = this
+    for(let item of this.sellerList){
+      if(item.route==that.$route.name){
+        that.activeSeller =that.sellerList.indexOf(item)
+        break
+      }
+    }
+
   },
   components: {
     'v-header': header
@@ -55,27 +67,6 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-@import '../assets/sass/mixin.scss';
+<style scoped>
 
-.tab {
-    display: flex;
-    height: 40px;
-    width: 100%;
-    line-height: 40px;
-    // border-bottom: 1px solid rgba(7,17,27,0.1);
-    @include border-1px(rgba(7,17,27,0.1));
-    .tab-item {
-        flex-grow: 1;
-        text-align: center;
-        & > .item {
-            display: block;
-            font-size: 14px;
-            color: rgb(77,85,93);
-            &.active {
-                color: rgb(240,20,20);
-            }
-        }
-    }
-}
 </style>

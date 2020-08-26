@@ -12,6 +12,12 @@
 .eatCard{
     background: white;
     border-radius: 5px;
+    text-align: left;
+    /* height:100px; */
+    margin:5px;
+  }
+.eatCardTwo{
+    background: white;
     /* height:100px; */
     margin:5px;
   }

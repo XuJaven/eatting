@@ -1,16 +1,11 @@
 <template lang="html">
   <div class="goods">
-    <div class="menu-wrapper" ref="menuWrapper">
-      <ul>
-        <li v-for="(item,index) in goods" :key=index class="menu-item" :class="{'current': parseInt(index) === currentIndex }" @click="selectMenu(index, $event)">
-          <!-- index的类型是string, 好坑啊 -->
-          <span class="text border-1px">
-            <span v-show="item.type>0" class="icon" :class="classMap[item.type]"></span>{{item.name}}
-          </span>
-        </li>
-      </ul>
-    </div>
-    <div class="foods-wrapper" ref="foodsWrapper">
+    <div ref="menuWrapper" style="margin-bottom:50px" >
+    <van-sidebar v-model="activeKey">
+      <van-sidebar-item v-for="(item,index) in goods" :key="index" :title="item.name" @click="selectMenu(index)" />
+    </van-sidebar>
+    </div >
+    <div class="foods-wrapper" ref="foodsWrapper" style="margin-bottom:50px" >
       <ul>
         <li v-for="(item,index) in goods" :key=index class="food-list food-list-hook">
           <h1 class="title">{{item.name}}</h1>
@@ -62,7 +57,9 @@ export default {
       goods: [], // 后端获取的数据存在goods数组中
       listHeight: [], // 每一个不同title商品之间的高度
       scrollY: 0, // food-warpper已经滚动的高度，通过Better-scroll的scroll事件计算得出
-      selectedFood: {}
+      selectedFood: {},
+      activeKey:0,
+      foodScore:''
     }
   },
   computed: {
@@ -109,17 +106,14 @@ export default {
       this.selectedFood = food
       this.$refs.food.show()  // 选中food子组件，调用子组件里的show方法
     },
-    selectMenu(index, event) { // 移动端better-scroll会阻止默认事件，所以需要在初始化的时候设置click=true
-      if (!event._constructed) { // event._constructed是Better-Scroll派发才会携带
-        return // 因为better-scroll在PC端不阻止默认事件，所以需要过滤
-      }
+    selectMenu(index) { // 移动端better-scroll会阻止默认事件，所以需要在初始化的时候设置click=true
       let foodList = this.$refs.foodsWrapper.getElementsByClassName('food-list-hook')
       let el = foodList[index]
       this.foodScore.scrollToElement(el, 300) // better-scroll的一个API，接受2个参数，第一个为滚动到达的元素，第二个为滚动时间
       // console.log(typeof index) // index类型为string
     },
     _initScroll() { // 初始化better-scroll
-      this.menuScroll = new BScroll(this.$refs.menuWrapper, {
+      new BScroll(this.$refs.menuWrapper, {
         click: true // better-scroll会派发一个click事件
       })
 
@@ -166,8 +160,8 @@ export default {
 .goods {
     display: flex;
     position: absolute;
-    top: 180px;
-    bottom: 46px;
+    top: 190px;
+    bottom: 50px;
     width: 100%;
     overflow: hidden;
     .menu-wrapper {
