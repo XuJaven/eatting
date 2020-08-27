@@ -27,7 +27,6 @@ export default {
       seller: {
         id: (() => { // 每个商家都有一个id标识
           let queryParam = urlParse()
-          // console.log(queryParam)
           return queryParam.id
         })() // 立即执行函数获取id
       },
@@ -37,6 +36,11 @@ export default {
         {value:3,title:'商家',route:'seller'}
       ],
       activeSeller: 0
+    }
+  },
+  methods:{
+    _activeSellerSet(item){
+      return (item.route===this.$route.name)
     }
   },
   created() {
@@ -51,15 +55,8 @@ export default {
 
   },
   mounted(){
-console.log('开始',this.$route)
     let that = this
-    for(let item of this.sellerList){
-      if(item.route==that.$route.name){
-        that.activeSeller =that.sellerList.indexOf(item)
-        break
-      }
-    }
-
+    this.activeSeller=this.sellerList.findIndex(this._activeSellerSet)
   },
   components: {
     'v-header': header
