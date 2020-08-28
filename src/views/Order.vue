@@ -1,317 +1,55 @@
 <template>
   <div>
     <van-tabs v-model="activeOrder">
-  <van-tab v-for="(item,index) in  orderList" :key="index" :title="item.title" class="order-body">
-    
-    <div class="order">
-      <div class="title" style="">
-        <div class="title_left">
-          <div class="title_img">
-            <a href=""><img src="../images/1cde.jpg" alt=""></a>
-          </div>
-          <div class="title_main">
-            <div class="title_name" style="font-size:14px;font-weight:bold"><a href="">A米汉堡</a>
-              <a href=""><i class="icon-keyboard_arrow_right icon"></i></a>
+  <van-tab title="全部" class="order-body">
+    <div v-for="(item,index) in myDate" :key="item.id">
+      <div class="order">
+        <div class="title" style="">
+          <div class="title_left">
+            <div class="title_img">
+              <a  href=""><img src="../images/1cde.jpg" alt=""></a>
             </div>
+            <div class="title_main">
+              <div class="title_name" style="font-size:14px;font-weight:bold"><a style="color:black" href="">{{item.name}}</a>
+                <a href=""><i class="icon-keyboard_arrow_right icon"></i></a>
+              </div>
+              <div>
+                <span style="background: #999;color:white;font-size:10px;padding:1px 5px;border-radius:5px">本店已休息</span>
+              </div>
+            </div>
+          </div>
+          <div class="title_right">
+            <span style="color: #999; font-size:12px">已送达</span>
+          </div>
+        </div>
+        <div class="main">
+          <div class="main_left">
+            <div class="main_left_img">
+              <img src="../images/1.jpg" alt="">
+            </div>
+            <div class="main_left_title" style="line-height:70px;margin-left:10px">
+              <span>{{item.nameMore}}</span>
+            </div>
+          </div>
+          <div class="mian_right">
             <div>
-              <span style="background: #999;color:white;font-size:10px;padding:1px 5px;border-radius:5px">本店已休息</span>
+              <div style="float: right;font-weight: bold;position: relative;top: 20px;">¥{{item.price}}</div>
+              <div style=" float: right;position: relative;top: 35px;font-size: 10px;right: -18px;color: #aaa;">共{{item.kucun}}件</div>
             </div>
-          </div>
-        </div>
-        <div class="title_right">
-          <span style="color: #999; font-size:12px">已送达</span>
-        </div>
-      </div>
-      <div class="main">
-        <div class="main_left">
-          <div class="main_left_img">
-            <img src="../images/1.jpg" alt="">
-          </div>
-          <div class="main_left_title" style="line-height:70px;margin-left:10px">
-            <span>eeeeeeeeeeeeeeeeee</span>
-          </div>
-        </div>
-        <div class="mian_right">
-          <div>
-            <div style="float: right;font-weight: bold;position: relative;top: 20px;">¥9</div>
-            <div style=" float: right;position: relative;top: 35px;font-size: 10px;right: -18px;color: #aaa;">共1件</div>
           </div>
         </div>
       </div>
     </div>
-    
-    <div class="order">
-      <div class="title" style="">
-        <div class="title_left">
-          <div class="title_img">
-            <a href=""><img src="../images/d64c553.jpg" alt=""></a>
-          </div>
-          <div class="title_main">
-            <div class="title_name" style="font-size:14px;font-weight:bold"><a href="">烤肉拌饭</a>
-              <a href=""><i class="icon-keyboard_arrow_right icon"></i></a>
-            </div>
-            <div>
-              <span style="background: #999;color:white;font-size:10px;padding:1px 5px;border-radius:5px">本店已休息</span>
-            </div>
-          </div>
-        </div>
-        <div class="title_right">
-          <span style="color: #999; font-size:12px">已送达</span>
-        </div>
-      </div>
-      <div class="main">
-        <div class="main_left">
-          <div class="main_left_img">
-            <img src="../images/3.jpg" alt="">
-          </div>
-          <div class="main_left_title" style="line-height:70px;margin-left:10px">
-            <span>eeeeeeeeeeeeeeeeee</span>
-          </div>
-        </div>
-        <div class="mian_right">
-          <div>
-            <div style="float: right;font-weight: bold;position: relative;top: 20px;">¥9</div>
-            <div style=" float: right;position: relative;top: 35px;font-size: 10px;right: -18px;color: #aaa;">共1件</div>
-          </div>
-        </div>
+    <div class="loadmore" style="width:95%;height:40px;background:white;border-radius:10px;margin:0 10px;margin:0 auto;">
+      <div style="text-align:center;line-height:40px" @click="loadMore">
+        <span>查看更多</span>
+        <van-icon name="arrow-down" />
       </div>
     </div>
-
-    <div class="order">
-      <div class="title" style="">
-        <div class="title_left">
-          <div class="title_img">
-            <a href=""><img src="../images/9ecd.jpg" alt=""></a>
-          </div>
-          <div class="title_main">
-            <div class="title_name" style="font-size:14px;font-weight:bold"><a href="">杨铭宇黄焖鸡米饭</a>
-              <a href=""><i class="icon-keyboard_arrow_right icon"></i></a>
-            </div>
-            <div>
-              <span style="background: #999;color:white;font-size:10px;padding:1px 5px;border-radius:5px">本店已休息</span>
-            </div>
-          </div>
-        </div>
-        <div class="title_right">
-          <span style="color: #999; font-size:12px">已送达</span>
-        </div>
-      </div>
-      <div class="main">
-        <div class="main_left">
-          <div class="main_left_img">
-            <img src="../images/2.jpg" alt="">
-          </div>
-          <div class="main_left_title" style="line-height:70px;margin-left:10px">
-            <span>eeeeeeeeeeeeeeeeee</span>
-          </div>
-        </div>
-        <div class="mian_right">
-          <div>
-            <div style="float: right;font-weight: bold;position: relative;top: 20px;">¥9</div>
-            <div style=" float: right;position: relative;top: 35px;font-size: 10px;right: -18px;color: #aaa;">共1件</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="order">
-      <div class="title" style="">
-        <div class="title_left">
-          <div class="title_img">
-            <a href=""><img src="../images/4c981e4.jpg" alt=""></a>
-          </div>
-          <div class="title_main">
-            <div class="title_name" style="font-size:14px;font-weight:bold"><a href="">格子那只水饺</a>
-              <a href=""><i class="icon-keyboard_arrow_right icon"></i></a>
-            </div>
-            <div>
-              <span style="background: #999;color:white;font-size:10px;padding:1px 5px;border-radius:5px">本店已休息</span>
-            </div>
-          </div>
-        </div>
-        <div class="title_right">
-          <span style="color: #999; font-size:12px">已送达</span>
-        </div>
-      </div>
-      <div class="main">
-        <div class="main_left">
-          <div class="main_left_img">
-            <img src="../images/4.jpg" alt="">
-          </div>
-          <div class="main_left_title" style="line-height:70px;margin-left:10px">
-            <span>eeeeeeeeeeeeeeeeee</span>
-          </div>
-        </div>
-        <div class="mian_right">
-          <div>
-            <div style="float: right;font-weight: bold;position: relative;top: 20px;">¥9</div>
-            <div style=" float: right;position: relative;top: 35px;font-size: 10px;right: -18px;color: #aaa;">共1件</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="order">
-      <div class="title" style="">
-        <div class="title_left">
-          <div class="title_img">
-            <a href=""><img src="../images/1b718f.jpg" alt=""></a>
-          </div>
-          <div class="title_main">
-            <div class="title_name" style="font-size:14px;font-weight:bold"><a href="">食尚便当</a>
-              <a href=""><i class="icon-keyboard_arrow_right icon"></i></a>
-            </div>
-            <div>
-              <span style="background: #999;color:white;font-size:10px;padding:1px 5px;border-radius:5px">本店已休息</span>
-            </div>
-          </div>
-        </div>
-        <div class="title_right">
-          <span style="color: #999; font-size:12px">已送达</span>
-        </div>
-      </div>
-      <div class="main">
-        <div class="main_left">
-          <div class="main_left_img">
-            <img src="../images/5.jpg" alt="">
-          </div>
-          <div class="main_left_title" style="line-height:70px;margin-left:10px">
-            <span>eeeeeeeeeeeeeeeeee</span>
-          </div>
-        </div>
-        <div class="mian_right">
-          <div>
-            <div style="float: right;font-weight: bold;position: relative;top: 20px;">¥9</div>
-            <div style=" float: right;position: relative;top: 35px;font-size: 10px;right: -18px;color: #aaa;">共1件</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="order">
-      <div class="title" style="">
-        <div class="title_left">
-          <div class="title_img">
-            <a href=""><img src="../images/880259b.jpg" alt=""></a>
-          </div>
-          <div class="title_main">
-            <div class="title_name" style="font-size:14px;font-weight:bold"><a href="">翔仔弯</a>
-              <a href=""><i class="icon-keyboard_arrow_right icon"></i></a>
-            </div>
-            <div>
-              <span style="background: #999;color:white;font-size:10px;padding:1px 5px;border-radius:5px">本店已休息</span>
-            </div>
-          </div>
-        </div>
-        <div class="title_right">
-          <span style="color: #999; font-size:12px">已送达</span>
-        </div>
-      </div>
-      <div class="main">
-        <div class="main_left">
-          <div class="main_left_img">
-            <img src="../images/6.jpg" alt="">
-          </div>
-          <div class="main_left_title" style="line-height:70px;margin-left:10px">
-            <span>eeeeeeeeeeeeeeeeee</span>
-          </div>
-        </div>
-        <div class="mian_right">
-          <div>
-            <div style="float: right;font-weight: bold;position: relative;top: 20px;">¥9</div>
-            <div style=" float: right;position: relative;top: 35px;font-size: 10px;right: -18px;color: #aaa;">共1件</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- 
-    <div class="order-item">
-      <div class="item">
-        <div class="item-head">
-          <a class="shop-p" href=""><img width="39px" height="39px" src="../images/9ecd.jpg" ></a>
-          <a class="shop-n" href="">杨铭宇黄焖鸡米饭</a>
-          <i class="icon-keyboard_arrow_right icon"></i>
-          <span class="shop-status" text-align="left">本店已休息</span>
-          <span class="order-status">已送达</span>
-        </div>
-        <div class="item-food">
-          <span class="food-p"><img width="70px" height="60px" src="../images/2.jpg" ></span>
-          <span class="food-n">食物名称</span>
-          <span class="food-price">¥9</span>
-          <span class="food-num">共1件</span>
-        </div>
-      </div>
-    </div>
-    <div class="order-item">
-      <div class="item">
-        <div class="item-head">
-          <a class="shop-p" href=""><img width="39px" height="39px" src="../images/d64c553.jpg" ></a>
-          <a class="shop-n" href="">烤肉拌饭</a>
-          <i class="icon-keyboard_arrow_right icon"></i>
-          <span class="shop-status">本店已休息</span>
-          <span class="order-status">已送达</span>
-        </div>
-        <div class="item-food">
-          <span class="food-p"><img width="70px" height="60px" src="../images/3.jpg" ></span>
-          <span class="food-n">食物名称</span>
-          <span class="food-price">¥9</span>
-          <span class="food-num">共1件</span>
-        </div>
-      </div>
-    </div>
-    <div class="order-item">
-      <div class="item">
-        <div class="item-head">
-          <a class="shop-p" href=""><img width="39px" height="39px" src="../images/4c981e4.jpg" ></a>
-          <a class="shop-n" href="">格子那只水饺</a>
-          <i class="icon-keyboard_arrow_right icon"></i>
-          <span class="shop-status">本店已休息</span>
-          <span class="order-status">已送达</span>
-        </div>
-        <div class="item-food">
-          <span class="food-p"><img width="70px" height="60px" src="../images/4.jpg" ></span>
-          <span class="food-n">食物名称</span>
-          <span class="food-price">¥9</span>
-          <span class="food-num">共1件</span>
-        </div>
-      </div>
-    </div>
-    <div class="order-item">
-      <div class="item">
-        <div class="item-head">
-          <a class="shop-p" href=""><img width="39px" height="39px" src="../images/1b718f.jpg" ></a>
-          <a class="shop-n" href="">食尚便当</a>
-          <i class="icon-keyboard_arrow_right icon"></i>
-          <span class="shop-status">本店已休息</span>
-          <span class="order-status">已送达</span>
-        </div>
-        <div class="item-food">
-          <span class="food-p"><img width="70px" height="60px" src="../images/5.jpg" ></span>
-          <span class="food-n">食物名称</span>
-          <span class="food-price">¥9</span>
-          <span class="food-num">共1件</span>
-        </div>
-      </div>
-    </div>
-    <div class="order-item">
-      <div class="item">
-        <div class="item-head">
-          <a class="shop-p" href=""><img width="39px" height="39px" src="../images/880259b.jpg" ></a>
-          <a class="shop-n" href="">翔仔弯</a>
-          <i class="icon-keyboard_arrow_right icon"></i>
-          <span class="shop-status">本店已休息</span>
-          <span class="order-status">已送达</span>
-        </div>
-        <div class="item-food">
-          <span class="food-p"><img width="70px" height="60px" src="../images/6.jpg" ></span>
-          <span class="food-n">食物名称</span>
-          <span class="food-price">¥9</span>
-          <span class="food-num">共1件</span>
-        </div>
-      </div>
-    </div> -->
   </van-tab>
+  <van-tab title="待消费" class="order-body"></van-tab>
+  <van-tab title="待评价" class="order-body"></van-tab>
+  <van-tab title="退款" class="order-body"></van-tab>
 </van-tabs>
 <!-- 未登录时显示下面 -->
 <!-- <div>
@@ -332,12 +70,41 @@ export default {
         {value:3,title:'待评价'},
         {value:4,title:'退款'}
       ],
-      activeOrder: 1
+      activeOrder: 1,
+      date:[
+        {id:1,name:"正新鸡排",nameMore:"小吃",price:"3",kucun:"1",img1:""},
+        {id:2,name:"A米汉堡",nameMore:"小吃",price:"5",kucun:"1",img1:""},
+        {id:3,name:"黄焖鸡",nameMore:"小吃",price:"3",kucun:"1",img1:""},
+        {id:4,name:"醉排骨",nameMore:"小吃",price:"7",kucun:"1",img1:""},
+        {id:5,name:"沙县大酒店",nameMore:"小吃",price:"0",kucun:"1",img1:""},
+        {id:6,name:"快餐",nameMore:"小吃",price:"3",kucun:"42",img1:""},
+        {id:7,name:"周毅妈妈家",nameMore:"小吃",price:"34",kucun:"42",img1:""},
+        {id:8,name:"红烧肉",nameMore:"小吃",price:"3",kucun:"32",img1:""},
+      ],
+      myDate:[],
+      i:1,
+    }
+  },
+  created(){
+    if(this.date.length > 1){
+      this.myDate[0]=this.date[0];
+      this.myDate[1]=this.date[1];
     }
   },
   methods:{
+    loadMore(){
+      this.i += 2;
+      for(let k = 2;k <= this.i;k ++){
+        if(k > this.date.length){
+          alert("not more");
+          return;
+        }
+        this.$set(this.myDate,k,this.date[k])
+      }
 
-  }
+    }
+  },
+  
 }
 </script>
 
@@ -371,8 +138,8 @@ export default {
   height: 39px;
 }
 .main_left_img{
-  width: 100%;
-  height: 100%;
+  width: 70px;
+  height: 70px;
   border-radius: 10px;
   overflow: hidden;
 }
