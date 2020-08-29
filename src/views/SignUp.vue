@@ -42,7 +42,7 @@
 <!-- </van-cell-group> -->
 <!-- <van-button type="primary" >注册</van-button> -->
 <div >
-<van-button :disabled="checkAble"  block type="primary" >
+<van-button :disabled="checkAble"  block type="primary" @click="_signup">
       注册
     </van-button>
 </div>
@@ -87,6 +87,21 @@ export default {
     }
   },
   methods:{
+    async _signup(){
+      let url = '/sys/user/'
+      let param ={
+        username:this.userName,
+        password:this.password,
+        phone:this.phone
+      }
+      let res = await this.$api.post(url,param)
+      let {message,status}=res
+      if(status===0){
+        this.$notify({ type: 'success', message:message})
+      }else{
+        this.$notify({ type: 'warning', message:message})
+      }
+    },
     phoneValidator(value){
       if(!value){
         this.errorMsg.phone=""

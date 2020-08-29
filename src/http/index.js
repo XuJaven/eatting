@@ -1,16 +1,18 @@
 import axios from 'axios'
-import cookies from  'vue-cookies'
+// import cookies from  'vue-cookies'
 
-let url='http://180.76.173.24:8080/'
+let urlIp='http://localhost:8088'
 
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
   // config.headers.test='test'
+  // Response.Headers.Add("Access-Control-Allow-Origin", "*")
+  // config.headers.Access-Control-Allow-Origin = '*'
   return config;
 }, function (error) {
   // 对请求错误做些什么
-  return Promise.reject(error);
+  return Promise.reject(error)
 });
 
 // 添加响应拦截器
@@ -26,28 +28,20 @@ axios.interceptors.response.use(function (response) {
 
 
 const http = {}
-http.post=function (data,content) {
+http.post=function (url,data) {
+  url =urlIp+url
+  console.log(data)
   return new Promise((resolve, reject)=>{
-    // if(content==1){
-      axios.post(url,data,{headers:{'content-type':'multipart/form-data'}}).then((response)=>{
-        resolve(response)
-      }).catch((error)=>{ // 请求失败处理
-        reject(error)
-      })
-    /*}
-    else{
-      axios.post(useurl,data).then((response)=>{
-        resolve(response)
-      }).catch((error)=>{ // 请求失败处理
-        reject(error)
-      })}*/
+    axios.post(url,data,{headers:{'content-type':'application/json'}}).then((response)=>{
+      resolve(response)
+    }).catch((error)=>{ // 请求失败处理
+      reject(error)
+    })
   })
 }
-http.get=function(data){
+http.get=function(url,data){
+  url =urlIp+url
   return new Promise((resolve, reject)=> {
- /*   if(cookies.isKey('usetoken') ){
-      data.token=cookies.get('usetoken')
-    }*/
     axios.get(url, {params: data}
     ).then((response) => {
       resolve(response)
