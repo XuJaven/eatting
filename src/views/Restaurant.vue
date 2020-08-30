@@ -45,12 +45,12 @@ export default {
   },
   created() {
     this.$http.get(`/api/seller?id=${this.seller.id}`).then((res) => {
-      if (res.data.errno === ERR_OK) {
-        // this.seller = res.data.data // 此方法id会被覆盖丢弃，改用Object.assign方法
-        this.seller = Object.assign({}, this.seller, res.data.data)
-        /* Object.assign 是es6语法，类似jQuery的$extend方法，详见MDN文档
+      // if (res.data.errno === ERR_OK) {
+      // this.seller = res.data.data // 此方法id会被覆盖丢弃，改用Object.assign方法
+      this.seller = Object.assign({}, this.seller, res.data)
+      /* Object.assign 是es6语法，类似jQuery的$extend方法，详见MDN文档
         https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign */
-      }
+      // }
     })
 
   },

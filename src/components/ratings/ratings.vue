@@ -110,14 +110,14 @@ export default {
   },
   created() {
     this.$http.get('/api/ratings').then((res) => {
-      if (res.data.errno === ERR_OK) {
-        this.ratings = res.data.data
-        this.$nextTick(() => {
-          this.scroll = new BScroll(this.$refs.ratings, {
-            click: true
-          })
+      // if (res.data.errno === ERR_OK) {
+      this.ratings = res.data
+      this.$nextTick(() => {
+        this.scroll = new BScroll(this.$refs.ratings, {
+          click: true
         })
-      }
+      })
+      // }
       // console.log('ratings', this.ratings)
     })
   },

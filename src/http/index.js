@@ -1,14 +1,10 @@
 import axios from 'axios'
 // import cookies from  'vue-cookies'
 
-let urlIp='http://localhost:8088'
-
+let urlIp ='http://localhost:8088'
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
-  // config.headers.test='test'
-  // Response.Headers.Add("Access-Control-Allow-Origin", "*")
-  // config.headers.Access-Control-Allow-Origin = '*'
   return config;
 }, function (error) {
   // 对请求错误做些什么
@@ -29,7 +25,6 @@ axios.interceptors.response.use(function (response) {
 
 const http = {}
 http.post=function (url,data) {
-  url =urlIp+url
   console.log(data)
   return new Promise((resolve, reject)=>{
     axios.post(url,data,{headers:{'content-type':'application/json'}}).then((response)=>{
@@ -39,11 +34,10 @@ http.post=function (url,data) {
     })
   })
 }
-http.get=function(url,data){
-  url =urlIp+url
+http.get=function(url){
+  url = urlIp+url
   return new Promise((resolve, reject)=> {
-    axios.get(url, {params: data}
-    ).then((response) => {
+    axios.get(url).then((response) => {
       resolve(response)
     }).catch((error) => { // 请求失败处理
       reject(error)

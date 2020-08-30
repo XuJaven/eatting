@@ -3,10 +3,10 @@ import App from './App.vue'
 import router from '@/router'
 import store from '@/store'
 import myMixin from '@/mixins'
-import api from '@/http'
-import http from 'axios'
+import http from '@/http'
+// import http from 'axios'
 import Vant from 'vant'
-import { Notify } from 'vant';
+import { Notify } from 'vant'
 import MyPlugins from '@/components'
 import 'vant/lib/index.css'
 import filters from '@/assets/filters'
@@ -22,7 +22,7 @@ Vue.use(myMixin)
 Vue.use(MyPlugins)
 Vue.prototype.$notify = Notify
 Vue.prototype.$http = http
-Vue.prototype.$api = api
+// Vue.prototype.$api = api
 Vue.prototype.$tools = Tools
 new Vue({
   router,

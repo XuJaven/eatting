@@ -5,7 +5,11 @@ var seller = appData.seller
 var goods = appData.goods
 var ratings = appData.ratings
 var apiRoutes = express.Router()
-
+app.all('*', function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Methods', '*')
+  next();
+});
 apiRoutes.get('/seller', function(req, res){
   res.send({
     errno: 0,

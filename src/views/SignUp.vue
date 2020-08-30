@@ -94,7 +94,7 @@ export default {
         password:this.password,
         phone:this.phone
       }
-      let res = await this.$api.post(url,param)
+      let res = await this.$http.post(url,param)
       let {message,status}=res
       if(status===0){
         this.$notify({ type: 'success', message:message})
