@@ -5,6 +5,9 @@ let urlIp ='http://localhost:8088'
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
+  if (sessionStorage.getItem('token')) {
+    config.headers.token = sessionStorage.getItem('token')
+  }
   return config;
 }, function (error) {
   // 对请求错误做些什么
@@ -24,6 +27,12 @@ axios.interceptors.response.use(function (response) {
 
 
 const http = {}
+http.setSession=(item='true')=>{
+  sessionStorage.setItem('token', item)
+}
+http.clearSession=()=>{
+  sessionStorage.setItem('token', '')
+}
 http.post=function (url,data) {
   console.log(data)
   return new Promise((resolve, reject)=>{

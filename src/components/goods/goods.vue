@@ -114,11 +114,13 @@ export default {
     },
     _initScroll() { // 初始化better-scroll
       new BScroll(this.$refs.menuWrapper, {
-        click: true // better-scroll会派发一个click事件
+        click: true, // better-scroll会派发一个click事件
+        mouseWheel: true
       })
 
       this.foodScore = new BScroll(this.$refs.foodsWrapper, {
         click: true, // better-scroll会派发一个click事件
+        mouseWheel: true,
         probeType: 3 // 该参数看文档 https://github.com/ustbhuangyi/better-scroll
       })
 

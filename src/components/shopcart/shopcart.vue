@@ -152,7 +152,8 @@ export default {
         this.$nextTick(() => {
           if (!this.scroll) {
             this.scroll = new BScroll(this.$refs.listContent, {
-              click: true
+              click: true,
+              mouseWheel: true
             })
           } else {
             this.scroll.refresh()

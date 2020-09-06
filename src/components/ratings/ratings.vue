@@ -114,7 +114,8 @@ export default {
       this.ratings = res.data
       this.$nextTick(() => {
         this.scroll = new BScroll(this.$refs.ratings, {
-          click: true
+          click: true,
+          mouseWheel: true
         })
       })
       // }

@@ -119,7 +119,8 @@ export default {
     _initScroll() {
       if (!this.scroll) {
         this.scroll = new BScroll(this.$refs.seller, {
-          click: true
+          click: true,
+          mouseWheel: true
         })
       } else {
         this.scroll.refresh() // 因为watch执行的比mounted晚，所以要重置better-scroll

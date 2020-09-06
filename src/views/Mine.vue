@@ -1,7 +1,7 @@
 <template>
   <div style="text-align: center;">
      <!-- 登录后显示 -->
-<!-- <div  class="eatCard userInforCard" >
+<div  class="eatCard userInforCard" >
   <div>{{userInfo.name}}</div>
   <div>{{userInfo.phone}}</div>
 </div>
@@ -11,12 +11,7 @@
   <van-grid-item icon="cart" text="购物车" />
   <van-grid-item icon="wap-nav" text="我的订单" />
 </van-grid>
-  </div> -->
- <!-- 如果还未登录 -->
-  <div>
-    <div>还未登陆，请先登陆哦</div>
-<van-button type="primary" to="login">登陆</van-button>
- </div>
+  </div>
   </div>
 </template>
 

@@ -42,7 +42,7 @@
 <!-- </van-cell-group> -->
 <!-- <van-button type="primary" >注册</van-button> -->
 <div >
-<van-button :disabled="checkAble"  block type="primary" @click="_signup">
+<van-button :disabled="checkAble"  block type="primary" @click="_signUp">
       注册
     </van-button>
 </div>
@@ -87,7 +87,8 @@ export default {
     }
   },
   methods:{
-    async _signup(){
+    // 注册
+    async _signUp(){
       let url = '/sys/user/'
       let param ={
         username:this.userName,
