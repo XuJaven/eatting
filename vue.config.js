@@ -75,13 +75,12 @@ module.exports = {
   devServer: {
     port: 8090, // 配置端口
     proxy: {
-       '/api': {
-        target: 'http://127.0.0.1:8088',
+       '/': {
+      //  '/api': {
+        // target: 'http://127.0.0.1:8088',
+        target: 'http://42.194.198.168:8090',
         changOrigin: true, // 跨域
-        ws: false, // 是否代理websockets
-        /* pathRewrite: {
-          '/api': '/api' // 重写请求
-        } */
+        ws: false, 
       } 
     }
   },

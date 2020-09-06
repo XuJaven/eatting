@@ -44,8 +44,9 @@
           <span class="empty" @click="empty">清空</span>
         </div>
         <div class="list-content" ref="listContent">
-          <ul>
+          <!-- <ul>
             <li class="food border-1px" v-for="(food,index) in selectFoods" :key=index>
+               <img :src="food.icon" alt="" width="57" height="57">
               <span class="name">{{food.name}}</span>
               <div class="price">
                 <span>￥{{food.price * food.count}}</span>
@@ -54,7 +55,13 @@
                 <cartcontrol :food="food"  @cartAdd="drop"></cartcontrol>
               </div>
             </li>
-          </ul>
+          </ul> -->
+          <van-row  v-for="(food,index) in selectFoods" :key=index>
+            <van-col span="5"><img :src="food.icon" alt="" width="57" height="57"></van-col>
+            <van-col span="11" style="line-height:3;">{{food.name}}</van-col>
+            <van-col span="3" style="line-height:3;">￥{{food.price * food.count}}</van-col>
+            <van-col span="5"><cartcontrol :food="food"  @cartAdd="drop"></cartcontrol></van-col>
+          </van-row> 
         </div>
       </div>
     </transition>
@@ -381,7 +388,7 @@ export default {
       }
       .list-header {
         height: 40px;
-        line-height: 40px;
+        // line-height: 40px;
         padding: 0 18px;
         background: #f3f5f7;
         border-bottom: 1px solid rgba(7,17,27,0.1);

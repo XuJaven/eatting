@@ -6,7 +6,7 @@ let urlIp ='http://localhost:8088'
 axios.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
   if (sessionStorage.getItem('token')) {
-    config.headers.token = sessionStorage.getItem('token')
+    config.headers.Authorization = sessionStorage.getItem('token')
   }
   return config;
 }, function (error) {
