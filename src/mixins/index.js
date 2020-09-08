@@ -12,7 +12,7 @@ var myMixin = {
   },
   methods: {
     hello: function () {
-      console.log('hello from mixin!')
+      // console.log('hello from mixin!')
     }
   },
   beforeDestroy () {
@@ -20,7 +20,6 @@ var myMixin = {
       this.$bus.$off(this.name)
       this.$bus.$off(this.name + 'Clear')
     } */
-    console.log('test')
   }
 }
 export default {

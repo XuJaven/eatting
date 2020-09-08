@@ -54,9 +54,7 @@ export default {
     }, */
   },
   mounted(){
-    console.log(this.$store.state.seller)
-    // this._login()
-    
+        
   }
 }
 </script>

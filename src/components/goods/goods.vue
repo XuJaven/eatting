@@ -76,7 +76,7 @@ export default {
     selectFoods() {
       let foods = []
       this.goods.forEach((good) => {
-        good.foods.forEach((food) => {
+        good.goodsList.forEach((food) => {
           if (food.count) {
             foods.push(food)
           }
@@ -107,8 +107,9 @@ export default {
     async _goodsGet(){
       let url = '/dms/goods/getAllByTypeId'
       let res = await this.$http.get(url)
-      if(status===0){
-        let {data,message,status}=res
+      let {data,message,status}=res
+      if(status===200){
+        this.goods = data
         // this.$notify({ type: 'success', message:message})
       }else{
         this.$notify({ type: 'warning', message:message})

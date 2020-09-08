@@ -345,7 +345,6 @@ export default {
   mounted(){
 
     this.$nextTick(() => {
-      console.log(this.$refs.menuWrapper[0])
       new BScroll(this.$refs.menuWrapper[0], {
         click: true, // better-scroll会派发一个click事件
         mouseWheel: true    
