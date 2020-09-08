@@ -1,10 +1,6 @@
 // 运行后端
-require('./build/dev-server.js')
-// 自定义项目名称及其版本号
-/* const date = new Date()
-const year = String(date.getFullYear())
-const month = date.getMonth() + 1 >= 10 ? date.getMonth() + 1 : '0' + (date.getMonth() + 1)
-const day = date.getDate() >= 10 ? date.getDate() : '0' + date.getDate() */
+// require('./build/dev-server.js')
+
 
 
 // 定义resolve方法

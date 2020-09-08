@@ -41,9 +41,22 @@ export default {
     // 当路由变换
     fetchData(){
       this.pageTitle=this.$route.meta.title
-    }
+    },
+  /*     async _login(){
+      let url = '/dms/goods/getAllByTypeId'
+      let res = await this.$http.get(url)
+      let {data,message,status}=res
+      if(status===0){
+        this.$notify({ type: 'success', message:message})
+      }else{
+        this.$notify({ type: 'warning', message:message})
+      }
+    }, */
   },
   mounted(){
+    console.log(this.$store.state.seller)
+    // this._login()
+    
   }
 }
 </script>

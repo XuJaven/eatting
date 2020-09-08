@@ -87,7 +87,7 @@ export default {
   },
   created() {
     this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'] // 通过seller.supports[index].type映射对应的className
-    this.$http.get('/api/goods').then((res) => {
+    /* this.$http.get('/api/goods').then((res) => {
       // if (res.data.errno === ERROR_OK) {
       this.goods = res.data
       // console.log(`goods`, this.goods)
@@ -96,9 +96,24 @@ export default {
         this._calculateHeight()
       })
       // }
+    }) */
+    this._goodsGet()
+    this.$nextTick(() => { // DOM渲染是异步的，操作DOM要在$nextTick的回调里，此时DOM已经渲染完毕
+      this._initScroll()
+      this._calculateHeight()
     })
   },
   methods: {
+    async _goodsGet(){
+      let url = '/dms/goods/getAllByTypeId'
+      let res = await this.$http.get(url)
+      if(status===0){
+        let {data,message,status}=res
+        // this.$notify({ type: 'success', message:message})
+      }else{
+        this.$notify({ type: 'warning', message:message})
+      }
+    },
     selectFood(food, event) {
       if (!event._constructed) { // event._constructed是Better-Scroll派发才会携带
         return // 因为better-scroll在PC端不阻止默认事件，所以需要过滤

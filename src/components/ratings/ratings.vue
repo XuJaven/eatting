@@ -109,7 +109,7 @@ export default {
     }
   },
   created() {
-    this.$http.get('/api/ratings').then((res) => {
+  /*   this.$http.get('/api/ratings').then((res) => {
       // if (res.data.errno === ERR_OK) {
       this.ratings = res.data
       this.$nextTick(() => {
@@ -120,6 +120,13 @@ export default {
       })
       // }
       // console.log('ratings', this.ratings)
+    }) */
+    this.ratings = this.$store.state.ratings
+    this.$nextTick(() => {
+      this.scroll = new BScroll(this.$refs.ratings, {
+        click: true,
+        mouseWheel: true
+      })
     })
   },
   components: {

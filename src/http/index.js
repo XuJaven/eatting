@@ -1,7 +1,7 @@
 import axios from 'axios'
 // import cookies from  'vue-cookies'
 
-let urlIp ='http://localhost:8088'
+// let urlIp ='http://localhost:8088'
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
@@ -44,7 +44,7 @@ http.post=function (url,data) {
   })
 }
 http.get=function(url){
-  url = urlIp+url
+  // url = urlIp+url
   return new Promise((resolve, reject)=> {
     axios.get(url).then((response) => {
       resolve(response)

@@ -38,19 +38,19 @@ export default {
     // 登录
     async _login(){
       let url = '/auth/login'
-      let param ={
+      /* let param ={
         password:this.password,
         username:this.phone
       }
       let res = await this.$http.post(url,param)
       let {data,message,status}=res
-      /* if(status===0){
+      if(status===0){
         this.$notify({ type: 'success', message:message})
       }else{
         this.$notify({ type: 'warning', message:message})
-      }
+      } */
       this.$http.setSession('test')
-      this.$router.replace('mine') */
+      this.$router.replace('mine')
     },
   }
 }
