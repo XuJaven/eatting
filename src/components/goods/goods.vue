@@ -2,15 +2,15 @@
   <div class="goods">
     <div ref="menuWrapper" style="margin-bottom:50px" >
     <van-sidebar v-model="activeKey">
-      <van-sidebar-item v-for="(item,index) in goods" :key="index" :title="item.name" @click="selectMenu(index)" />
+      <van-sidebar-item v-for="(item,index) in goods" :key="index" :title="item.typeName" @click="selectMenu(index)" />
     </van-sidebar>
     </div >
     <div class="foods-wrapper" ref="foodsWrapper" style="margin-bottom:50px" >
       <ul>
         <li v-for="(item,index) in goods" :key=index class="food-list food-list-hook">
-          <h1 class="title">{{item.name}}</h1>
+          <h1 class="title">{{item.typeName}}</h1>
           <ul>
-            <li v-for="(food,index) in item.foods" :key=index class="food-item border-1px">
+            <li v-for="(food,index) in item.goodsList" :key=index class="food-item border-1px">
               <div class="icon" @click="selectFood(food, $event)">
                 <img :src="food.icon" alt="" width="57" height="57">
               </div>
@@ -18,11 +18,12 @@
                 <h2 class="name">{{food.name}}</h2>
                 <p class="desc">{{food.description}}</p>
                 <div class="extra">
-                  <span class="count">月售{{food.sellCount}}份</span><span v-show="food.rating">好评率{{food.rating}}%</span>
+                  <span class="count">月售{{food.totalSales}}份</span>
+                  <!-- <span v-show="food.rating">好评率{{food.rating}}%</span> -->
                 </div>
                 <div class="price">
-                  <span class="now">￥{{food.price}}</span>
-                  <span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
+                  <span class="now">￥{{food.sellPrice}}</span>
+                  <span class="old" v-show="food.originPrice">￥{{food.originPrice}}</span>
                 </div>
                 <div class="cartcontrol-wrapper">
                   <cartcontrol :food="food" @cartAdd="addFood"></cartcontrol>
@@ -87,16 +88,6 @@ export default {
   },
   created() {
     this.classMap = ['decrease', 'discount', 'special', 'invoice', 'guarantee'] // 通过seller.supports[index].type映射对应的className
-    /* this.$http.get('/api/goods').then((res) => {
-      // if (res.data.errno === ERROR_OK) {
-      this.goods = res.data
-      // console.log(`goods`, this.goods)
-      this.$nextTick(() => { // DOM渲染是异步的，操作DOM要在$nextTick的回调里，此时DOM已经渲染完毕
-        this._initScroll()
-        this._calculateHeight()
-      })
-      // }
-    }) */
     this._goodsGet()
     this.$nextTick(() => { // DOM渲染是异步的，操作DOM要在$nextTick的回调里，此时DOM已经渲染完毕
       this._initScroll()
@@ -114,6 +105,9 @@ export default {
       }else{
         this.$notify({ type: 'warning', message:message})
       }
+    },
+    _orderSettle(){
+      console.log('testorder')
     },
     selectFood(food, event) {
       if (!event._constructed) { // event._constructed是Better-Scroll派发才会携带

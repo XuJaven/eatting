@@ -59,7 +59,7 @@
           <van-row  v-for="(food,index) in selectFoods" :key=index>
             <van-col span="5"><img :src="food.icon" alt="" width="57" height="57"></van-col>
             <van-col span="11" style="line-height:3;">{{food.name}}</van-col>
-            <van-col span="3" style="line-height:3;">￥{{food.price * food.count}}</van-col>
+            <van-col span="3" style="line-height:3;">￥{{food.sellPrice * food.count}}</van-col>
             <van-col span="5"><cartcontrol :food="food"  @cartAdd="drop"></cartcontrol></van-col>
           </van-row> 
         </div>
@@ -124,7 +124,7 @@ export default {
     totalPrice() {
       let total = 0
       this.selectFoods.forEach((food) => {
-        total += food.price * food.count
+        total += food.sellPrice * food.count
       })
       return total
     },
@@ -238,10 +238,7 @@ export default {
       })
     },
     pay() {
-      if (this.totalPrice < this.minPrice) {
-        return
-      }
-      alert(`支付${this.totalPrice}元`)
+      this.$parent._orderSettle()
     }
   },
   components: {cartcontrol},
