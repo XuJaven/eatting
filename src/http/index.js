@@ -1,7 +1,7 @@
 import axios from 'axios'
 // import cookies from  'vue-cookies'
 
-// let urlIp ='http://localhost:8088'
+let urlIp ='api'
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
@@ -34,7 +34,7 @@ http.clearSession=()=>{
   sessionStorage.setItem('token', '')
 }
 http.post=function (url,data) {
-  console.log(data)
+  // url = urlIp+url
   return new Promise((resolve, reject)=>{
     axios.post(url,data,{headers:{'content-type':'application/json'}}).then((response)=>{
       resolve(response)

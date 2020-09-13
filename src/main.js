@@ -7,6 +7,7 @@ import http from '@/http'
 // import http from 'axios'
 import Vant from 'vant'
 import { Notify } from 'vant'
+import { Dialog } from 'vant'
 import MyPlugins from '@/components'
 import 'vant/lib/index.css'
 import filters from '@/assets/filters'
@@ -21,6 +22,7 @@ Vue.use(Vant)
 Vue.use(myMixin)
 Vue.use(MyPlugins)
 Vue.prototype.$notify = Notify
+Vue.prototype.$dialog = Dialog 
 Vue.prototype.$http = http
 // Vue.prototype.$api = api
 Vue.prototype.$tools = Tools

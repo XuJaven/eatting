@@ -34,7 +34,7 @@
         </li>
       </ul>
     </div>
-    <shopcart ref="shopcart" :selectFoods="selectFoods" :deliveryPrice="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
+    <shopcart @orderSubmit="_orderSettle" ref="shopcart" :selectFoods="selectFoods" :deliveryPrice="seller.deliveryPrice" :min-price="seller.minPrice"></shopcart>
     <food :food="selectedFood" ref="food" @cartAdd="addFood"></food>
   </div>
 </template>
@@ -107,7 +107,29 @@ export default {
       }
     },
     _orderSettle(){
-      console.log('testorder')
+      /*   let url = '/dms/goods/getAllByTypeId'
+      let res = await this.$http.get(url)
+      let {data,message,status}=res
+      if(status===200){
+        this.goods = data
+        // this.$notify({ type: 'success', message:message})
+      }else{
+        this.$notify({ type: 'warning', message:message})
+      } */
+
+      console.log(this.selectFoods)
+      this.$dialog.confirm({
+        message: '确认付款'
+      })
+      
+      /*  this.$dialog.confirm({
+        message: '确认付款'
+      }) .then(() => {
+        // on confirm
+      })
+        .catch(() => {
+          // on cancel
+        }) */
     },
     selectFood(food, event) {
       if (!event._constructed) { // event._constructed是Better-Scroll派发才会携带

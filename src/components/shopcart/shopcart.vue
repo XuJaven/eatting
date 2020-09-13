@@ -17,7 +17,7 @@
           另需配送费￥{{deliveryPrice}}元
         </div>
       </div>
-      <div class="content-right" @click="pay">
+      <div class="content-right" @click="$emit('orderSubmit')">
         <div class="pay" :class="payClass">
           {{payDesc}}
         </div>
@@ -36,6 +36,7 @@
           <div class="inner inner-hook"></div>
         </div>
       </transition-group> -->
+
     </div>
     <transition name="fold">
       <div class="shopcart-list" v-show="listShow">
@@ -237,9 +238,6 @@ export default {
         food.count = 0
       })
     },
-    pay() {
-      this.$parent._orderSettle()
-    }
   },
   components: {cartcontrol},
   updated() {
