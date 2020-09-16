@@ -1,4 +1,7 @@
 export default {
+  user: {
+    
+  },
   seller: {
     name: "粥品香坊（回龙观）",
     description: "蜂鸟专送",

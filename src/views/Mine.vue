@@ -2,8 +2,15 @@
   <div style="text-align: center;">
      <!-- 登录后显示 -->
 <div  class="eatCard userInforCard" >
+  <van-row>
+    <van-col :span="18">
   <div>{{userInfo.name}}</div>
   <div>{{userInfo.phone}}</div>
+  </van-col>
+  <van-col :span="6">
+  <van-button @click="_logout">退出</van-button>
+  </van-col>
+  </van-row>
 </div>
     <div class="eatCard">
 <van-grid :column-num="3">
@@ -27,7 +34,10 @@ export default {
     }
   },
   methods:{  
-   
+    _logout(){
+      this.$http.clearSession()
+      this.$router.replace('login')
+    }
   }
 }
 </script>

@@ -106,16 +106,28 @@ export default {
         this.$notify({ type: 'warning', message:message})
       }
     },
-    _orderSettle(){
-      /*   let url = '/dms/goods/getAllByTypeId'
-      let res = await this.$http.get(url)
+    async _orderSettle(){
+      let orderVoList =[]
+      let user = sessionStorage.getItem('user')
+      user = JSON.parse(user)
+      let url = '/dms/order/getDxfOrder/'+user.uid
+      this.selectFoods.forEach((item)=>
+      {
+        let foodItem={
+          goodsCount: item.count,
+		      goodsId: item.id
+        }
+        orderVoList.push(foodItem)
+      })
+      let param = orderVoList
+      let res = await this.$http.post(url,param)
       let {data,message,status}=res
       if(status===200){
         this.goods = data
         // this.$notify({ type: 'success', message:message})
       }else{
         this.$notify({ type: 'warning', message:message})
-      } */
+      }
 
       console.log(this.selectFoods)
       this.$dialog.confirm({

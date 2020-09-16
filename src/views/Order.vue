@@ -14,8 +14,8 @@
   <van-tab title="待评价" class="order-body"></van-tab>
   <van-tab title="退款" class="order-body"></van-tab>
 </van-tabs> -->
-    <van-tabs v-model="activeOrder">
-  <van-tab v-for="(item,index) in  orderList" :key="index" :title="item.title"  class="order-body">
+    <van-tabs v-model="activeOrder" @click="_getOrder">
+  <van-tab v-for="(item,index) in  orderList" :key="index" :title="item.title"  class="order-body" >
  <div v-for="(item,index) in myDate" :key="index">
       <div class="order">
         <div class="title" style="">
@@ -28,12 +28,13 @@
                 <a href=""><i class="icon-keyboard_arrow_right icon"></i></a>
               </div>
               <div>
-                <span style="background: #999;color:white;font-size:10px;padding:1px 5px;border-radius:5px">本店已休息</span>
+                <span style="background: #999;color:white;font-size:10px;padding:1px 5px;border-radius:5px">{{item.orderNo}}</span>
+                <!-- <span style="background: #999;color:white;font-size:10px;padding:1px 5px;border-radius:5px">本店已休息</span> -->
               </div>
             </div>
           </div>
           <div class="title_right">
-            <span style="color: #999; font-size:12px">已送达</span>
+            <span style="color: #999; font-size:12px">{{item.concatName}} {{item.concat}}</span>
           </div>
         </div>
         <div class="main">
@@ -47,8 +48,10 @@
           </div>
           <div class="mian_right">
             <div>
-              <div style="float: right;font-weight: bold;position: relative;top: 20px;">¥{{item.price}}</div>
-              <div style=" float: right;position: relative;top: 35px;font-size: 10px;right: -18px;color: #aaa;">共{{item.kucun}}件</div>
+              <!-- <div style=" float: right;position: relative;top: 35px;font-size: 10px;right: -18px;color: #aaa;">{{item.concatName}}</div> -->
+              <!-- <div style=" float: right;position: relative;top: 35px;font-size: 10px;right: -18px;color: #aaa;">{{item.concat}}</div> -->
+              <div style="float: right;font-weight: bold;position: relative;top: 20px;">¥{{item.totalPrice}}</div>
+              <!-- <div style=" float: right;position: relative;top: 35px;font-size: 10px;right: -18px;color: #aaa;">共{{item.kucun}}件</div> -->
             </div>
           </div>
         </div>
@@ -67,10 +70,11 @@ export default {
   data(){
     return{
       orderList:[
-        {value:1,title:'全部'},
-        {value:2,title:'待消费'},
-        {value:3,title:'待评价'},
-        {value:4,title:'退款'}
+        // {value:0,title:'全部'},
+        {value:1,title:'待消费'},
+        {value:2,title:'已支付'},
+        {value:3,title:'已完成'},
+        {value:4,title:'已退款'}
       ],
       activeOrder: 1,
       date:[
@@ -88,13 +92,14 @@ export default {
     }
   },
   created(){
-    if(this.date.length > 1){
+    this._getOrder()
+    /* if(this.date.length > 1){
       this.myDate[0]=this.date[0];
       this.myDate[1]=this.date[1];
-    }
+    } */
   },
   methods:{
- /*    loadMore(){
+    /*    loadMore(){
       this.i += 2;
       for(let k = 2;k <= this.i;k ++){
         if(k > this.date.length){
@@ -105,18 +110,18 @@ export default {
       }
 
     } */
-        async _login(){
-      let url = '/dms/order/getDxfOrder'
-      let param ={
-        password:this.password,
-        username:this.phone
-      }
-      let res = await this.$http.post(url,param)
+    async _getOrder(){
+      let user = sessionStorage.getItem('user')
+      user = JSON.parse(user)
+      let state =this.orderList[this.activeOrder].value
+      let url = '/dms/order/getOrderByStatus/'+user.uid+'/'+state
+      let res = await this.$http.get(url)
       let {data,message,status}=res
       if(status===200){
-        this.$http.setSession(data)
-        this.$notify({ type: 'success', message:message})
-        this.$router.replace('mine')
+        // this.$http.setSession(data)
+        // this.$notify({ type: 'success', message:message})
+        // this.$router.replace('mine')
+        this.myDate = data
       }else{
         this.$notify({ type: 'warning', message:message})
       }

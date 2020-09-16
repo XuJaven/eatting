@@ -8,6 +8,7 @@
   />
   <van-field
     v-model="password"
+    type="password"
     label="密码"
     placeholder="请输入密码"
   />
@@ -45,7 +46,10 @@ export default {
       let res = await this.$http.post(url,param)
       let {data,message,status}=res
       if(status===200){
-        this.$http.setSession(data)
+        let  {tokenValue,user}= data
+        this.$http.setSession(tokenValue)
+        sessionStorage.setItem('user', JSON.stringify(user))
+        let test = sessionStorage.getItem('user')
         this.$notify({ type: 'success', message:message})
         this.$router.replace('mine')
       }else{

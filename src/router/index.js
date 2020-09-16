@@ -13,7 +13,9 @@ router.beforeEach((to, from, next)=>{
   }
   let isLogin = sessionStorage.getItem('Authorization')
   // 未登录
-  if (isLogin === null) {
+  if (isLogin) {
+    next()
+  }else{
     switch(to.name){
     case 'order':
       next({ name: 'orderbefore' }) 
@@ -25,9 +27,6 @@ router.beforeEach((to, from, next)=>{
       next() 
       break
     }
-    // 登录　　
-  }else{
-    next()
   }  
 })
 export default router

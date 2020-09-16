@@ -5,7 +5,7 @@ import axios from 'axios'
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
-  if (sessionStorage.getItem('token')) {
+  if (sessionStorage.getItem('Authorization')) {
     config.headers.Authorization = sessionStorage.getItem('Authorization')
   }
   return config;
