@@ -11,7 +11,7 @@ router.beforeEach((to, from, next)=>{
     document.body.style.backgroundColor="#fff" 
     break
   }
-  let isLogin = sessionStorage.getItem('token')
+  let isLogin = sessionStorage.getItem('Authorization')
   // 未登录
   if (isLogin === null) {
     switch(to.name){

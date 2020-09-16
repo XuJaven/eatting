@@ -21,7 +21,7 @@ export default {
   data(){
     return{
       userInfo:{
-        name:'XXX',
+        name:'admin',
         phone:'192000000000',
       }
     }

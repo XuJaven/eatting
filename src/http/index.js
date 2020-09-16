@@ -1,12 +1,12 @@
 import axios from 'axios'
 // import cookies from  'vue-cookies'
 
-let urlIp ='api'
+// let urlIp ='api'
 // 添加请求拦截器
 axios.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
   if (sessionStorage.getItem('token')) {
-    config.headers.Authorization = sessionStorage.getItem('token')
+    config.headers.Authorization = sessionStorage.getItem('Authorization')
   }
   return config;
 }, function (error) {
@@ -27,11 +27,11 @@ axios.interceptors.response.use(function (response) {
 
 
 const http = {}
-http.setSession=(item='true')=>{
-  sessionStorage.setItem('token', item)
+http.setSession=(item)=>{
+  sessionStorage.setItem('Authorization', item.prefix+item.value)
 }
 http.clearSession=()=>{
-  sessionStorage.setItem('token', '')
+  sessionStorage.setItem('Authorization', '')
 }
 http.post=function (url,data) {
   // url = urlIp+url

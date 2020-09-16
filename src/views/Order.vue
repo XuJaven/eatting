@@ -1,8 +1,22 @@
 <template>
   <div>
+    <!-- <van-tabs v-model="activeOrder"> -->
+  <!-- <van-tab title="全部" class="order-body"> -->
+   
+   <!--  <div class="loadmore" style="width:95%;height:40px;background:white;border-radius:10px;margin:0 10px;margin:0 auto;">
+      <div style="text-align:center;line-height:40px" @click="loadMore">
+        <span>查看更多</span>
+        <van-icon name="arrow-down" />
+      </div>
+    </div> -->
+<!--   </van-tab>
+  <van-tab title="待消费" class="order-body"></van-tab>
+  <van-tab title="待评价" class="order-body"></van-tab>
+  <van-tab title="退款" class="order-body"></van-tab>
+</van-tabs> -->
     <van-tabs v-model="activeOrder">
-  <van-tab title="全部" class="order-body">
-    <div v-for="(item,index) in myDate" :key="item.id">
+  <van-tab v-for="(item,index) in  orderList" :key="index" :title="item.title"  class="order-body">
+ <div v-for="(item,index) in myDate" :key="index">
       <div class="order">
         <div class="title" style="">
           <div class="title_left">
@@ -40,22 +54,10 @@
         </div>
       </div>
     </div>
-    <div class="loadmore" style="width:95%;height:40px;background:white;border-radius:10px;margin:0 10px;margin:0 auto;">
-      <div style="text-align:center;line-height:40px" @click="loadMore">
-        <span>查看更多</span>
-        <van-icon name="arrow-down" />
-      </div>
-    </div>
+
   </van-tab>
-  <van-tab title="待消费" class="order-body"></van-tab>
-  <van-tab title="待评价" class="order-body"></van-tab>
-  <van-tab title="退款" class="order-body"></van-tab>
+
 </van-tabs>
-<!-- 未登录时显示下面 -->
-<!-- <div>
-<div>还未登陆，无法查看订单哦</div>
-<van-button type="primary" to="login">登陆</van-button>
-</div> -->
 </div>
 </template>
 <script>
@@ -92,7 +94,7 @@ export default {
     }
   },
   methods:{
-    loadMore(){
+ /*    loadMore(){
       this.i += 2;
       for(let k = 2;k <= this.i;k ++){
         if(k > this.date.length){
@@ -102,7 +104,25 @@ export default {
         this.$set(this.myDate,k,this.date[k])
       }
 
-    }
+    } */
+        async _login(){
+      let url = '/dms/order/getDxfOrder'
+      let param ={
+        password:this.password,
+        username:this.phone
+      }
+      let res = await this.$http.post(url,param)
+      let {data,message,status}=res
+      if(status===200){
+        this.$http.setSession(data)
+        this.$notify({ type: 'success', message:message})
+        this.$router.replace('mine')
+      }else{
+        this.$notify({ type: 'warning', message:message})
+      }
+      // this.$http.setSession('test')
+      // this.$router.replace('mine')
+    },
   },
   
 }

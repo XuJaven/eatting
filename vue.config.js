@@ -72,8 +72,11 @@ module.exports = {
     port: 8090, // 配置端口
     proxy: {
        '/dms': {
-      //  '/api': {
-        // target: 'http://127.0.0.1:8088',
+        target: 'http://42.194.198.168:8090',
+        changOrigin: true, // 跨域
+        ws: false, 
+      }, 
+       '/auth': {
         target: 'http://42.194.198.168:8090',
         changOrigin: true, // 跨域
         ws: false, 
